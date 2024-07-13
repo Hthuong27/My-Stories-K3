@@ -10,23 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
             profile.classList.remove("hidden");
             profileName.innerHTML = user.email;
         } else {
-            // console.log("No user is signed in.");
             btnlogin.classList.remove("hidden");
             profile.classList.add("hidden");
         }
     });
 
     btnlogout.addEventListener("click", function () {
-        firebase
-            .auth()
-            .signOut()
-            .then(
-                function () {
-                    console.log("Signed Out");
-                },
-                function (error) {
-                    console.error("Sign Out Error", error);
-                }
-            );
+        firebase.auth().signOut().then(function () {
+            console.log("Signed Out");
+            window.location.href = "/index.html";  
+        }).catch(function (error) {
+            console.error("Sign Out Error", error);
+        });
     });
 });
+
+function checklogin() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            window.location.href = "/post.html";
+        } else {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+    })
+};
+
+function redirectToLogin() {
+    window.location.href = "/login.html";
+};
+

@@ -1,48 +1,27 @@
-document.addEventListener("submit", function (e) {
-    e.preventDefault();
+document.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("exampleInputEmail1").value;
+    const password = document.getElementById("exampleInputPassword1").value;
 
-    let username = document.querySelector("#username").value.trim();
-    let email = document.querySelector("#email").value.trim();
-    let password = document.querySelector("#password").value;
-    let confirmpassword = document.querySelector("#confirmpassword").value;
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    let lowerCaseLetter = /[a-z]/g;
-    let upperCaseLetter = /[A-Z]/g;
-    let numbers = /[0-9]/g;
-
-    if (username.length < 6) {
-        alert("Username must be at least 6 characters");
-    } else if (password.length < 8) {
-        alert("Password must be at least 8 characters");
-    } else if (!password.match(lowerCaseLetter)) {
-        alert("Password must contain lowercase letter");
-    } else if (!password.match(upperCaseLetter)) {
-        alert("Password must contain uppercase letter");
-    } else if (!password.match(numbers)) {
-        alert("Password must contain a number or special character");
-    } else if (password !== confirmpassword) {
-        alert("Password is not confirmed correctly");
+    if (user && user.email === email && user.password === password) {
+        Swal.fire({
+            title: "Success!",
+            text: "Login successful.",
+            icon: "success",
+            confirmButtonText: "OK",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/index.html";
+            }
+        });
     } else {
-        console.log(username, email, password);
-
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                console.log(userCredential);
-                Swal.fire({
-                    title: "Tạo tài khoản thành công",
-                    icon: "success",
-                    didClose: function () {
-                        window.location.href = "login.html"
-                    },
-                });
-            })
-            .catch((error) => {
-                Swal.fire({
-                    title: "Tài khoản đã tồn tại",
-                    icon: "error",
-                });
-            });
+        Swal.fire({
+            title: "Error!",
+            text: "Invalid email or password.",
+            icon: "error",
+            confirmButtonText: "Try Again",
+        });
     }
 });

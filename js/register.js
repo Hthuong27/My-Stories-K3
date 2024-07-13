@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("click");
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase
+
             .auth()
             .signInWithPopup(provider)
             .then((result) => {
-                var token = credential.accessToken;
-                var user = result.user;
+                window.location.href = "/index.html";
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -28,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .auth()
             .signInWithPopup(provider)
             .then((result) => {
-                var credential = result.credential;
-                var user = result.user;
-                var accessToken = credential.accessToken;
+                window.location.href = "/login.html";
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -41,26 +39,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    btnApple = document.querySelector(".btn-apple");
-    btnApple.addEventListener("click", function () {
-        console.log("click");
-        var provider = new firebase.auth.OAuthProvider("apple.com");
-        firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then((result) => {
-                var credential = result.credential;
-                var user = result.user;
-                var accessToken = credential.accessToken;
-                var idToken = credential.idToken;
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
-            });
-    });
-});
+document.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmpassword =
+            document.getElementById("confirmpassword").value;
 
+        if (password !== confirmpassword) {
+            Swal.fire({
+                title: "Error!",
+                text: "Passwords do not match.",
+                icon: "error",
+                confirmButtonText: "Try Again",
+            });
+            return;
+        }
+
+        const user = {
+            username: username,
+            email: email,
+            password: password,
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        Swal.fire({
+            title: "Success!",
+            text: "Registration successful.",
+            icon: "success",
+            confirmButtonText: "OK",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/login.html";
+            }
+        });
+    });

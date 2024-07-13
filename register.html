@@ -27,12 +27,22 @@
                 <a href="index.html" class="button">
                     <i class="fa-solid fa-house"></i>
                 </a>
-                <a href="login.html" class="button">
+                <!-- <a href="login.html" class="button">
                     <i class="fa-solid fa-user"></i>
-                </a>
-                <a href="post.html" class="button">
+                </a> -->
+                <a href="#" class="button" onclick="checklogin()">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="/login.html">Login</a></li>
+                      <li><a class="dropdown-item" href="/register.html">Register</a></li>
+                      <li><a class="dropdown-item btnlogout" href="#">Logout</a></li>
+                    </ul>
+                  </div>  
             </div>
         </header>
         <main>
@@ -48,7 +58,7 @@
                         >
                             <h3 class="card-title text-center">Register</h3>
                             <div class="card-text">
-                                <form>
+                                <form id="registerform">
                                     <div class="form-group">
                                         <label for="username">Username</label>
                                         <input
@@ -109,25 +119,10 @@
                                 </form>
                                 <div class="formbtn">
                                     <div class="">
-                                        <button
-                                            class="btn btn-outline-danger btn-google"
-                                        >
-                                            Sign in with Google
-                                        </button>
+                                        <i class="fa-brands fa-google btn btn-google btn-danger"></i>                                
                                     </div>
                                     <div class="">
-                                        <button
-                                            class="btn btn-outline-dark btn-apple"
-                                        >
-                                            Sign in with Apple
-                                        </button>
-                                    </div>
-                                    <div class="">
-                                        <button
-                                            class="btn btn-outline-info btn-facebook"
-                                        >
-                                            Sign in with Facebook
-                                        </button>
+                                        <i class="fa-brands fa-facebook btn btn-facebook btn-primary"></i>
                                     </div>
                                 </div>
                             </div>

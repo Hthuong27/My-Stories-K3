@@ -89,7 +89,10 @@ form {
 .formbtn {
     display: flex;
     justify-content: center;
-    gap: 6px;
+    gap: 15px;
+}
+.formbtn i{
+    font-size: 25px;
 }
 
 form .btn{
@@ -112,7 +115,7 @@ form .btn:hover {
 
 .sign-up {
     text-align: center;
-    padding: 10px 0 20px 0;
+    padding: 12px;
 }
 
 #postsContainer {
