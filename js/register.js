@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("click");
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase
-
             .auth()
             .signInWithPopup(provider)
             .then((result) => {
@@ -39,23 +38,86 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const confirmpassword =
-            document.getElementById("confirmpassword").value;
+// document.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     const username = document.getElementById("username").value || [];
+//     const email = document.getElementById("email").value;
+//     const password = document.getElementById("password").value;
+//     const confirmpassword = document.getElementById("confirmpassword").value;
 
-        if (password !== confirmpassword) {
-            Swal.fire({
-                title: "Error!",
-                text: "Passwords do not match.",
-                icon: "error",
-                confirmButtonText: "Try Again",
+//     if (password !== confirmpassword) {
+//         Swal.fire({
+//             title: "Error!",
+//             text: "Passwords do not match.",
+//             icon: "error",
+//             confirmButtonText: "Try Again",
+//         });
+//         return;
+//     }
+
+//     const user = {
+//         username: username,
+//         email: email,
+//         password: password,
+//     };
+
+//     localStorage.setItem("user", JSON.stringify(user));
+
+//     Swal.fire({
+//         title: "Success!",
+//         text: "Registration successful.",
+//         icon: "success",
+//         confirmButtonText: "OK",
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             window.location.href = "/login.html";
+//         }
+//     });
+// });
+
+document.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let username = document.querySelector("#username").value.trim();
+    let email = document.querySelector("#email").value.trim();
+    let password = document.querySelector("#password").value;
+    let confirmpassword = document.querySelector("#confirmpassword").value;
+
+    let lowerCaseLetter = /[a-z]/g;
+    let upperCaseLetter = /[A-Z]/g;
+    let numbers = /[0-9]/g;
+
+    if (username.length < 6) {
+        alert("Username must be at least 6 characters");
+    } else if (password.length < 8) {
+        alert("Password must be at least 8 characters");
+    } else if (!password.match(lowerCaseLetter)) {
+        alert("Password must contain lowercase letter");
+    } else if (!password.match(upperCaseLetter)) {
+        alert("Password must contain uppercase letter");
+    } else if (!password.match(numbers)) {
+        alert("Password must contain a number or special character");
+    } else if (password !== confirmpassword) {
+        alert("Password is not confirmed correctly");
+    } else {
+        console.log(username, email, password);
+
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                console.log(userCredential);
+                Swal.fire({
+                    title: "Tạo tài khoản thành công",
+                    icon: "success",
+                });
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Tài khoản đã tồn tại",
+                    icon: "error",
+                });
             });
-            return;
-        }
 
         const user = {
             username: username,
@@ -63,16 +125,6 @@ document.addEventListener("submit", function (event) {
             password: password,
         };
 
-        localStorage.setItem("user", JSON.stringify(user));
-
-        Swal.fire({
-            title: "Success!",
-            text: "Registration successful.",
-            icon: "success",
-            confirmButtonText: "OK",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "/login.html";
-            }
-        });
-    });
+        localStorage.setItem("users", JSON.stringify(user));
+    }
+});
