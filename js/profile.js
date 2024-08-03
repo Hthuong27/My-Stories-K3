@@ -13,10 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 avatarElement.src = user.photoURL;
                 nameElement.textContent = user.displayName;
                 emailElement.textContent = `Email: ${user.email}`;
-            } else {
-
-            }
-            
+            } 
         } else {
             // No user is signed in.
             console.log("No user is signed in.");

@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             post.timestamp
         ).toLocaleDateString()}
                 </p>
-            </div>
-        `;
+            </div>`;
     });
 
     document.getElementById("postsContainer").innerHTML = html;

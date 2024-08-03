@@ -1,17 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const postForm = document.getElementById("postForm");
+    // const postForm = document.getElementById("postForm");
     var data_user = [];
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/v8/firebase.User
             var uid = user.uid;
             console.log(user);
             data_user = user;
-            // ...
         } else {
-            // User is signed out
-            // ...
+
         }
     });
 

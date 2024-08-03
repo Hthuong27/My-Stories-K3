@@ -27,6 +27,7 @@
                 style="font-size: 30px; text-decoration: none; color: white"
                 >My Stories</a
             >
+
             <div class="button-container">
                 <a href="index.html" class="button">
                     <i class="fa-solid fa-house"></i>
@@ -34,10 +35,12 @@
                 <a href="#" class="button" onclick="checklogin()">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
+
                 <div class="">
                     <div class="btnlogin">
                         <a href="/login.html" class="btn btn-light">Login</a>
                     </div>
+                    
                     <div class="dropdown profile-name">
                         <button
                             class="btn btn-outline-light dropdown-toggle"
@@ -47,27 +50,19 @@
                             aria-expanded="false"
                         >
                             <img src="" class="avatar" alt="" />
-                            <!-- <div class="usericon">
-                                <i class="fa-solid fa-user"></i>
-                            </div> -->
                         </button>
                         <ul
                             class="dropdown-menu"
                             aria-labelledby="dropdownMenuButton1"
                         >
-                            <!-- <li>
-                                <a class="dropdown-item" href="/login.html"
-                                    >Login</a
-                                >
-                            </li> -->
                             <li>
                                 <a class="dropdown-item" href="/profile.html"
-                                    >Profile</a
+                                    ><i class="fa-solid fa-user"></i> Profile</a
                                 >
                             </li>
                             <li>
                                 <a class="dropdown-item btnlogout" href="#"
-                                    >Logout</a
+                                    ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
                                 >
                             </li>
                         </ul>
@@ -77,12 +72,12 @@
         </header>
 
         <main class="prof">
-            <div class="profile pt-4">
+            <div class="profile d-flex flex-column align-items-center justify-content-center">
                 <img src="" id="avatar-profile" alt="" />
                 <h2 id="name" class="pt-2"></h2>
                 <p id="email"></p>
                 <a href="/editprofile.html" class="btn btn-outline-light"
-                    >Chỉnh sửa</a
+                    >Edit Profile</a
                 >
             </div>
         </main>
@@ -108,5 +103,6 @@
         <script defer src="js/config.js"></script>
         <script src="js/checklogin.js"></script>
         <script src="/js/profile.js"></script>
+        <script src="js/in.js"></script>
     </body>
 </html>

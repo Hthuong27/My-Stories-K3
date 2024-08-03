@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .signOut()
             .then(function () {
                 console.log("Signed Out");
+                window.location.href = "/index.html";
             })
             .catch(function (error) {
                 console.error("Sign Out Error", error);
