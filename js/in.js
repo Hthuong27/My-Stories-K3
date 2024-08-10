@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     let posts = JSON.parse(localStorage.getItem("posts")) || [];
     let html = "";
+
+    // Đảo ngược thứ tự của mảng posts
+    posts.reverse();
+
     posts.forEach((post) => {
         html += `
             <div class="child-status mb-3">
