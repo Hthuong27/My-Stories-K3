@@ -35,7 +35,7 @@ header {
 }
 
 .button {
-    outline: 0 !important;
+    /* outline: 0 !important;
     border: 0 !important;
     width: 40px;
     height: 40px;
@@ -43,7 +43,8 @@ header {
     background-color: transparent;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    font-size: 18px;
     color: #fff;
     transition: all ease-in-out 0.3s;
     cursor: pointer;
@@ -216,4 +217,9 @@ form .btn:hover {
 
 .container input:checked ~ svg {
     fill: #e3474f;
+}
+
+p {
+    margin-top: unset !important;
+    margin-bottom: unset !important;
 }
