@@ -53,10 +53,6 @@ header {
     transform: translateY(-3px);
 }
 
-.icon {
-    font-size: 22px;
-}
-
 main {
     display: flex;
     justify-content: center;
@@ -73,7 +69,7 @@ main {
     justify-content: center;
 }
 
-.card-body{
+.card-body {
     padding: 20px;
 }
 
@@ -85,7 +81,7 @@ form {
     font-size: 14px;
 }
 
-.form-group {   
+.form-group {
     margin-bottom: 3px;
 }
 
@@ -149,10 +145,6 @@ form .btn:hover {
     height: auto;
 }
 
-.child-status .icon i {
-    padding: 15px 15px 0 20px;
-}
-
 .hidden {
     display: none;
 }
@@ -188,3 +180,40 @@ form .btn:hover {
     border-radius: 50%;
 }
 
+.icon {
+    padding: 1px;
+}
+
+/* .child-status .icon i {
+    padding: 15px 15px 0 20px;
+} */
+
+/* From Uiverse.io by andrew-demchenk0 */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.container svg {
+    height: 31px;
+    width: 31px;
+    transition: all 0.3s;
+    fill: white;
+}
+
+.container svg:hover {
+    transform: scale(1.1);
+}
+
+.container input:checked ~ svg {
+    fill: #e3474f;
+}

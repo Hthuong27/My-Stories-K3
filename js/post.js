@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // const postForm = document.getElementById("postForm");
     var data_user = [];
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -18,6 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const content = document.getElementById("content").value;
         const image = document.getElementById("image").value;
 
+        if (!content) {
+            alert("Please fill in the content of the article");
+            return;
+        }
+
         const post = {
             user: data_user.displayName,
             title: title,
@@ -34,3 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "index.html";
     });
 });
+
