@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const content = document.getElementById("content").value;
         const image = document.getElementById("image").value;
 
-        if (!content) {
+        if (!title && !content && !image) {
             alert("Please fill in the content of the article");
             return;
         }
